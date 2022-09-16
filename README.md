@@ -1,0 +1,2 @@
+# MozillaCreate
+Mozilla extension project
