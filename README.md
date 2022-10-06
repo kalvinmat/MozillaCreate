@@ -12,3 +12,7 @@ E.g cd Desktop/Projects/CS4540
 The example provided is the location where i have my project.
 Once you are in the location you will type in the following command "git clone https://github.com/kalvinmat/MozillaCreate.git"
 Then you should have it cloned to your folder.
+
+
+Once cloned in the folder you wil cd into the mozzi folder.
+Then run the following command npm install, which will download the node for it.
