@@ -14,5 +14,11 @@ Once you are in the location you will type in the following command **"git clone
 Then you should have it cloned to your folder.
 
 
+Use a editor to open the folder (recommend using Visual Studio Code editor) or open the terminal command line.
+
+If not installed node install node from https://nodejs.org/en/.
+
 Once cloned in the folder you wil cd into the mozzi folder.
-Then run the following command **"npm install"**, which will download the node for it.
+Then run the following command **"npm install"**, which will download the node packages for it.
+
+
