@@ -39,8 +39,10 @@ git checkout -b <new branch name>
 
 git add -A 
     // adds all the changes you have made in your current local respository to the git push you are going to make
+
 git commit -m "what changes are you creating"
     // commit to the changes you will push and describing the changes you will make for others to know
+
 git push
     // push all the changes you made into the current branch you are part of
     // **make sure you are in the correct branch you want to push the changes into**
