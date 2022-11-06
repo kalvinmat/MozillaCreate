@@ -13,12 +13,34 @@ The example provided is the location where i have my project.
 Once you are in the location you will type in the following command **"git clone https://github.com/kalvinmat/MozillaCreate.git"**
 Then you should have it cloned to your folder.
 
+Following you will need to cd into the MozillaCreate folder, then cd into the mozzi folder.
 
-Use a editor to open the folder (recommend using Visual Studio Code editor) or open the terminal command line.
+Once you are inside the mozzi folder, write the following command **npm install**.
 
-If not installed node install node from https://nodejs.org/en/.
+If you recieve a error probably means you do not have node.js installed.
+Follow the following website to install node **https://nodejs.org/en/download/** 18.12.1 version.
 
-Once cloned in the folder you wil cd into the mozzi folder.
-Then run the following command **"npm install"**, which will download the node packages for it.
+Once you have node installed, redo the command if not skip this step.
 
 
+Git commands to know
+
+git clone https://github.com/kalvinmat/MozillaCreate
+    // clones the project into your local pc
+
+git branch 
+    // see what branch you are on
+
+git checkout <branch name>
+    // to go into the branch you named
+
+git checkout -b <new branch name>
+    //go into a new branch you created
+
+git add -A 
+    // adds all the changes you have made in your current local respository to the git push you are going to make
+git commit -m "what changes are you creating"
+    // commit to the changes you will push and describing the changes you will make for others to know
+git push
+    // push all the changes you made into the current branch you are part of
+    // **make sure you are in the correct branch you want to push the changes into**
