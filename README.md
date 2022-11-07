@@ -22,7 +22,6 @@ Follow the following website to install node **https://nodejs.org/en/download/**
 
 Once you have node installed, redo the command if not skip this step.
 
-
 Git commands to know
 
 git clone https://github.com/kalvinmat/MozillaCreate
