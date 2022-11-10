@@ -1,3 +1,8 @@
+html, body {
+  width: 500px;
+}
+
+
 .popup-content input[type=text] {
   float: right;
   padding: 6px;
@@ -5,4 +10,11 @@
   margin-top: 8px;
   margin-right: 16px;
   font-size: 17px;
+}
+
+.Logo{
+  display: block;
+  margin-top: auto;
+  margin-right: auto;
+  width: 10%;
 }
