@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
+import logo from './reality_icon.png'
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
@@ -55,26 +56,32 @@ function App() {
 
   return (
     <>
-      <h1>Voice Notes</h1>
+      
+     
       <div className="container">
         <div className="box">
-          <h2>Current Note</h2>
-          {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
+       
+        <h1>Mozi Demo</h1>
+        <h2><img src={logo} alt='Logo' style={{ width: "100px", height:"100px"}}  /></h2>
+
+          {isListening ? <span></span> : <span></span>}
           <button onClick={handleSaveNote} disabled={!note}>
-            Save Note
+            Search
           </button>
           <button onClick={() => setIsListening(prevState => !prevState)}>
             Start/Stop
           </button>
+
           <p>{note}</p>
-        </div>
-        <div className="box">
-          <h2>Notes</h2>
+          {/* <div className="box-2">
+          
           {savedNotes.map(n => (
             <p key={n}>{n}</p>
           ))}
+        </div> */}
         </div>
-        <a href='https://www.youtube.com/watch?v=U2g--_TDYj4'>Tutorial for text to speech</a>
+       
+        
       </div>
     </>
   )

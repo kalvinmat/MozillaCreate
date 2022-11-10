@@ -20,12 +20,27 @@ code {
 
 .box {
   box-shadow: -4px 10px 35px -1px rgba(0, 0, 0, 0.75);
-  min-height: 20rem;
+  min-height: 6rem;
+  min-width:20;
+  margin: 30px;
+  padding: 20px;
+  opacity: 0.9;
+  position: absolute;
+  top: 8px;
+  right: 25px;
+}
+
+.box-2 {
+  box-shadow: -4px 10px 35px -1px rgba(0, 0, 0, 0.75);
+  min-height: 50rem;
+  min-width: 10rem;
   margin: 30px;
   padding: 20px;
   border-radius: 5px;
+  position: relative;
+  top: 8px;
+  right: 16px;
 }
-
 h1 {
   margin-left: 20px;
 }

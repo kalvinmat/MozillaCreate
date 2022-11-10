@@ -35,4 +35,15 @@
   to {
     transform: rotate(360deg);
   }
+
+}
+.Logo{
+
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  
+
 }
