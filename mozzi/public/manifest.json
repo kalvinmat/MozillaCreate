@@ -10,13 +10,22 @@
     },
 
     "permissions": [
-      "activeTab"
+      "<all_urls>",
+      "tabs",
+      "alarms",
+      "theme",
+      "notifications",
+      "proxy"
     ],
 
     "content_scripts": [
       {
+        
         "matches": ["<all_urls>"],
-        "js": ["./src/mozzi.js"]
+        "js": [
+          "browser-polyfill.js",
+          "mozzi.js"
+        ]
       }
     ],
     "background": {

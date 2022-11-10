@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
+import './CSS/App.css'
+import logo from './images/firefox_logo.png';
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
@@ -56,7 +57,8 @@ function App() {
 
   return (
     <>
-      <h1>Voice Notes</h1>
+      <h1>Mozzi</h1>
+      <img src={logo} alt="logo" />
       <div className="container">
         <div className="box">
           <h2>Current Note</h2>
@@ -75,7 +77,6 @@ function App() {
             <p key={n}>{n}</p>
           ))}
         </div>
-        <a href='https://www.youtube.com/watch?v=U2g--_TDYj4'>Tutorial for text to speech</a>
       </div>
     </>
   )
