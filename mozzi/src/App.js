@@ -61,10 +61,10 @@ function App() {
       <img src={logo} alt="logo" />
       <div className="container">
         <div className="box">
-          <h2>Current Note</h2>
-          {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
+          <h2>I'm Listening</h2>
+          {isListening ? <span>🎙️</span> : <span>🛑</span>}
           <button onClick={handleSaveNote} disabled={!note}>
-            Save Note
+            Save Your Speech
           </button>
           <button onClick={() => setIsListening(prevState => !prevState)}>
             Start/Stop
@@ -72,7 +72,7 @@ function App() {
           <p>{note}</p>
         </div>
         <div className="box">
-          <h2>Notes</h2>
+          <h2>What you said so far</h2>
           {savedNotes.map(n => (
             <p key={n}>{n}</p>
           ))}
