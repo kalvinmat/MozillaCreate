@@ -1,5 +1,5 @@
 {
-    "name": "Mozi",
+    "name": "Mozzi",
     "description": "Converts speech to text and use the text converted to search through an online search engine.",
     "version": "1.0.0",
     "manifest_version": 2,
@@ -9,13 +9,14 @@
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["popup/mozi.js"]
+        "js": ["popup/mozzi.js"]
       }
     ],
 
     "browser_action": {
+      "browser_style": true,
       "default_icon": "firefox-icon-256.png",
-      "default_popup": "popup/mozi_popup.html"
+      "default_popup": "popup/mozzi_popup.html"
     }  
   }
   
