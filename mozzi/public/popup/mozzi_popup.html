@@ -7,15 +7,13 @@
   </head>
 
 <body>
-  <div id="popup-content">
-
-    <img src='../firefox-icon-256.png' alt="Logo"/>
-    
-    <!-- <a href="#" id="window-create-popup">Create popup</a><br> -->
-    <a class="mozi search">Mozi:</a>
-    <input type="text" placeholder="Search">
-    <button type="button">search</button> 
-  </div>
+  <img src='../firefox-icon-256.png' alt="Logo"/>
+  <form id="form" role="search">
+    <label for="name">Mozzi:</label>
+    <input type="search" id="query" name="q"
+     placeholder="Search...">
+    <button>Search</button>
+  </form>
   <script src="mozzi.js"></script>
 </body>
 
