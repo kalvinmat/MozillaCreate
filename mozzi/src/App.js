@@ -9,6 +9,20 @@ mic.continuous = true
 mic.interimResults = true
 mic.lang = 'en-US'
 
+function Search(sentence) {
+  var text = sentence.split(' ');
+
+  var googleSearch = "https://www.google.com/search?q=";
+
+  for (var i = 0; i < text.length; i++) {
+    googleSearch += encodeURIComponent(text[i]);
+    if (i != text.length - 1) {
+      googleSearch += '&';
+    }
+  }
+  return googleSearch;
+}
+
 function App() {
   const [isListening, setIsListening] = useState(false)
   const [note, setNote] = useState(null)
@@ -75,7 +89,6 @@ function App() {
             <p key={n}>{n}</p>
           ))}
         </div>
-        <a href='https://www.youtube.com/watch?v=U2g--_TDYj4'>Tutorial for text to speech</a>
       </div>
     </>
   )
