@@ -81,11 +81,11 @@ function App() {
       <div className="mozzi-wrapper">
         <img src={logo} />
         <div className="mozzi-container">
-          <div className="mozzi-microphone"
+          <button className="mozzi-microphone"
             ref={microphoneRef}
             onClick={handleListening}>
             Talk
-          </div>
+          </button>
           <div className="mozzi-status">
             {isListening ? "Listening..." : "Click and ask Mozzi"}
           </div>
