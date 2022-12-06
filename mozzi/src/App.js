@@ -5,6 +5,7 @@ import logo from "./firefox-icon-256.png";
 
 function App() {
 
+  //url to engine
   const google = "https://www.google.com/search?q=";
 
 
@@ -65,10 +66,10 @@ function App() {
   //Resets the transcript and stops listening
   const handleReset = () => {
     stopHandle();
+    resetTranscript();
     if (transcript.length !== 0) {
       searchFor(transcript);
     }
-    resetTranscript();
   }
 
   const searchFor = (props) => {

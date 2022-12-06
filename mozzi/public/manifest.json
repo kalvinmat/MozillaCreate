@@ -1,0 +1,32 @@
+{
+    "name": "Mozzi",
+    "description": "Converts speech to text and use the text converted to search through an online search engine.",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "icons": {
+      "256": "firefox-icon-256.png"
+    },
+    "background": {
+      "scripts": [
+        "browser-pollyfill.js",
+        "background.js"
+      ]
+    },
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["../src/index.js"]
+    }],
+    "browser_action": {
+      "default_popup": "index.html",
+      "default_title": "Mozzi",
+      "default_icon": "firefox-icon-256.png"
+    },
+    "permissions": [
+      "idle", 
+      "search", 
+      "notifications", 
+      "tabs",
+      "<all_urls>"
+    ]
+  }
+  

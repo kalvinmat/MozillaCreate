@@ -1,5 +1,14 @@
 html, body {
-    width: 500px;
+    width: 1000px;
+    height: 1000px;
+  }
+  #root {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
   }
   .Logo{
     display: block;
