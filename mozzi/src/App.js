@@ -56,16 +56,16 @@ function App() {
   };
 
   //Stops the Listening process
-  const stopHandle = () => {
+  const stopHandle = (transcript) => {
     setIsListening(false);
     microphoneRef.current.classList.remove("listening");
     SpeechRecognition.stopListening();
+    searchFor(transcript);
   }
 
   //Resets the transcript and stops listening
-  const handleReset = (transcript) => {
+  const handleReset = () => {
     stopHandle();
-    searchFor(transcript);
     resetTranscript();
   }
 
