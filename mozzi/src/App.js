@@ -5,6 +5,9 @@ import logo from "./firefox-icon-256.png";
 
 function App() {
 
+  const google = "https://www.google.com/search?q=";
+
+
   //Default commands for user to use
   const commands = [
     {
@@ -60,9 +63,14 @@ function App() {
   }
 
   //Resets the transcript and stops listening
-  const handleReset = () => {
+  const handleReset = (transcript) => {
     stopHandle();
+    searchFor(transcript);
     resetTranscript();
+  }
+
+  const searchFor = (props) => {
+    window.open(google + props.split(" ").join(""))
   }
 
 
@@ -80,7 +88,7 @@ function App() {
             {isListening ? "Listening..." : "Click and ask Mozzi"}
           </div>
           {isListening && (
-            <button className="mozzi-stop" onClick={stopHandle}>
+            <button className="mozzi-stop" onClick={stopHandle(transcript)}>
               Stop
             </button>)}
           {transcript && (
