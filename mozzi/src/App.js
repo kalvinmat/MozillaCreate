@@ -90,10 +90,6 @@ function App() {
           <div className="mozzi-status">
             {isListening ? "Listening..." : "Click and ask Mozzi"}
           </div>
-          {isListening && (
-            <button className="mozzi-stop" onClick={stopHandle(transcript)}>
-              Stop
-            </button>)}
           {transcript && (
             <div className="mozzi-result-container">
               <div className="mozzi-result">
