@@ -60,14 +60,14 @@ function App() {
     setIsListening(false);
     microphoneRef.current.classList.remove("listening");
     SpeechRecognition.stopListening();
-    if (transcript.length !== 0) {
-      searchFor(transcript);
-    }
   }
 
   //Resets the transcript and stops listening
   const handleReset = () => {
     stopHandle();
+    if (transcript.length !== 0) {
+      searchFor(transcript);
+    }
     resetTranscript();
   }
 
