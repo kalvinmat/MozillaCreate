@@ -13,7 +13,7 @@ function App() {
     {
       command: "Mozzy search for *",
       callback: (website) => {
-        window.open("https://www.google.com/search?q=" + website.split(" ").join(""))
+        window.open("https://www.google.com/search?q=" + website.split(" ").join("+"))
       },
       commmand: "Mozzy change background color to *",
       callback: (color) => {
@@ -60,7 +60,9 @@ function App() {
     setIsListening(false);
     microphoneRef.current.classList.remove("listening");
     SpeechRecognition.stopListening();
-    searchFor(transcript);
+    if (transcript.length !== 0) {
+      searchFor(transcript);
+    }
   }
 
   //Resets the transcript and stops listening
@@ -70,14 +72,20 @@ function App() {
   }
 
   const searchFor = (props) => {
-    window.open(google + props.split(" ").join(""))
+    window.open(google + props.split(" ").join("+"))
   }
 
 
   return (
     <>
       <div className="mozzi-wrapper">
-        <img src={logo} />
+        <img src={logo} >
+          {isListening && (
+            <button className="mozzi-stop" onClick={stopHandle(transcript)}>
+              Stop
+            </button>)}
+        </img>
+        <label for="name">Mozzi</label>
         <div className="mozzi-container">
           <div className="mozzi-microphone"
             ref={microphoneRef}
