@@ -8,19 +8,19 @@ function App() {
   //Default commands for user to use
   const commands = [
     {
-      command: "Mozzi search for *",
+      command: "Mozzy search for *",
       callback: (website) => {
-        window.open(google + "" + website.split(" ").join(""))
+        window.open("https://www.google.com/search?q=" + website.split(" ").join(""))
       },
-      commmand: "Mozzi change background color to *",
+      commmand: "Mozzy change background color to *",
       callback: (color) => {
         document.body.style.background = color;
       },
-      command: "Mozzi reset",
+      command: "Mozzy reset",
       callback: () => {
         handleReset();
       },
-      command: "Mozzi reset background color",
+      command: "Mozzy reset background color",
       callback: () => {
         document.body.style.background = 'rgba(0,0,0,0.8)';
       }
@@ -31,9 +31,6 @@ function App() {
   const { transcript, resetTranscript } = useSpeechRecognition({ commands });
   const [isListening, setIsListening] = useState(false);
   const microphoneRef = useRef(null);
-
-  //constant for user to google, main search engine
-  const google = 'https://www.google.com/search?q=';
 
   //Alerts the user that the extension is not viable on their browser
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
