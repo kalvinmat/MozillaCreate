@@ -60,7 +60,9 @@ function App() {
     setIsListening(false);
     microphoneRef.current.classList.remove("listening");
     SpeechRecognition.stopListening();
-    searchFor(transcript);
+    if (transcript.length !== 0) {
+      searchFor(transcript);
+    }
   }
 
   //Resets the transcript and stops listening
@@ -70,7 +72,7 @@ function App() {
   }
 
   const searchFor = (props) => {
-    window.open(google + props.split(" ").join(""))
+    window.open(google + props.split(" ").join("+"))
   }
 
 
