@@ -1,84 +1,105 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
-
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition
-const mic = new SpeechRecognition()
-
-mic.continuous = true
-mic.interimResults = true
-mic.lang = 'en-US'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import logo from "./firefox-icon-256.png";
 
 function App() {
-  const [isListening, setIsListening] = useState(false)
-  const [note, setNote] = useState(null)
-  const [savedNotes, setSavedNotes] = useState([])
 
-  useEffect(() => {
-    const handleListen = () => {
-      if (isListening) {
-        mic.start()
-        mic.onend = () => {
-          console.log('continue..')
-          mic.start()
-        }
-      } else {
-        mic.stop()
-        mic.onend = () => {
-          console.log('Stopped Mic on Click')
-        }
+  //Default commands for user to use
+  const commands = [
+    {
+      command: "Mozzi search for *",
+      callback: (website) => {
+        window.open(google + "" + website.split(" ").join(""))
+      },
+      commmand: "Mozzi change background color to *",
+      callback: (color) => {
+        document.body.style.background = color;
+      },
+      command: "Mozzi reset",
+      callback: () => {
+        handleReset();
+      },
+      command: "Mozzi reset background color",
+      callback: () => {
+        document.body.style.background = 'rgba(0,0,0,0.8)';
       }
-      mic.onstart = () => {
-        console.log('Mics on')
-      }
+    }
+  ]
 
-      mic.onresult = event => {
-        const transcript = Array.from(event.results)
-          .map(result => result[0])
-          .map(result => result.transcript)
-          .join('')
-        console.log(transcript)
-        setNote(transcript)
-        mic.onerror = event => {
-          console.log(event.error)
-        }
-      }
-    };
+  //records everything the user says and reset Transcript resets to empty
+  const { transcript, resetTranscript } = useSpeechRecognition({ commands });
+  const [isListening, setIsListening] = useState(false);
+  const microphoneRef = useRef(null);
 
-    handleListen();
+  //constant for user to google, main search engine
+  const google = 'https://www.google.com/search?q=';
 
-  }, [isListening])
-
-  const handleSaveNote = () => {
-    setSavedNotes([...savedNotes, note])
-    setNote('')
+  //Alerts the user that the extension is not viable on their browser
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return (<alert
+      style={{
+        background: "hsla(10, 50%, 50%, .10)",
+        padding: "10px",
+      }}>
+      Your browser does not support This Extension.
+    </alert>);
   }
+
+  //Starts the listening process and starts the microphone
+  const handleListening = () => {
+    setIsListening(true);
+    microphoneRef.current.classList.add("listening");
+    SpeechRecognition.startListening({
+      continuous: true,
+    });
+  };
+
+  //Stops the Listening process
+  const stopHandle = () => {
+    setIsListening(false);
+    microphoneRef.current.classList.remove("listening");
+    SpeechRecognition.stopListening();
+  }
+
+  //Resets the transcript and stops listening
+  const handleReset = () => {
+    stopHandle();
+    resetTranscript();
+  }
+
 
   return (
     <>
-      <h1>Voice Notes</h1>
-      <div className="container">
-        <div className="box">
-          <h2>Current Note</h2>
-          {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
-          <button onClick={handleSaveNote} disabled={!note}>
-            Save Note
-          </button>
-          <button onClick={() => setIsListening(prevState => !prevState)}>
-            Start/Stop
-          </button>
-          <p>{note}</p>
+      <div className="mozzi-wrapper">
+        <img src={logo} />
+        <div className="mozzi-container">
+          <div className="mozzi-microphone"
+            ref={microphoneRef}
+            onClick={handleListening}>
+            Talk
+          </div>
+          <div className="mozzi-status">
+            {isListening ? "Listening..." : "Click and ask Mozzi"}
+          </div>
+          {isListening && (
+            <button className="mozzi-stop" onClick={stopHandle}>
+              Stop
+            </button>)}
+          {transcript && (
+            <div className="mozzi-result-container">
+              <div className="mozzi-result">
+                {transcript}
+              </div>
+              <button className="mozzi-reset" onClick={handleReset}>
+                Reset
+              </button>
+            </div>
+          )}
         </div>
-        <div className="box">
-          <h2>Notes</h2>
-          {savedNotes.map(n => (
-            <p key={n}>{n}</p>
-          ))}
-        </div>
-        <a href='https://www.youtube.com/watch?v=U2g--_TDYj4'>Tutorial for text to speech</a>
       </div>
     </>
-  )
+  );
 }
 
 export default App
